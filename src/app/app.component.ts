@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "./core/services/data.service";
+import { Dish } from "./shared/classes/Dish";
 
 @Component({
     selector: "app-root",
@@ -8,6 +9,7 @@ import { DataService } from "./core/services/data.service";
 })
 export class AppComponent implements OnInit {
     title = "food-menu";
+    dishes: Dish[] = []
 
     constructor(private dataService: DataService) {}
 
@@ -16,9 +18,10 @@ export class AppComponent implements OnInit {
     }
 
     getMenu() {
-        this.dataService.getCategories().subscribe({
-            next: (data) => {
-                console.log(data);
+        this.dataService.getDishes().subscribe({
+            next: (fetchedDishes) => {
+                this.dishes = fetchedDishes
+                console.log(JSON.parse(JSON.stringify(this.dishes)));
             },
             error: (error) => {
                 console.log(error);
