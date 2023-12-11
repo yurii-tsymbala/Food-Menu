@@ -8,6 +8,6 @@ import { DishesComponent } from './components/dishes/dishes.component';
 @NgModule({
     declarations: [MainComponent, CategoriesComponent, DishesComponent],
     imports: [CommonModule, MenuRoutingModule],
-    exports: [MainComponent],
+    exports: [MainComponent, CategoriesComponent, DishesComponent],
 })
 export class MenuModule {}
