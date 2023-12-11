@@ -1,29 +1,22 @@
 {
-  "categories": [
-    {
-      "Fast-food": [
-        "Hot-dog",
-        "Burger",
-        "Fries",
-        "Nuggets",
-        "Kebab"
-      ]
-    },
-    {
-      "Healthy-food": [
-        "Salmon pasta",
-        "Pesto eggs",
-        "Chicken stir-fry",
-        "Prawn fried rice"
-      ]
-    },
-    {
-      "Vegan-food": [
-        "Lentil bolognese",
-        "Bombay burritos",
-        "Vegetable biryani",
-        "Shepherds pie"
-      ]
-    }
-  ]
+    "categories": [
+        { "id": "0", "title": "Fast-food" },
+        { "id": "1", "title": "Healthy-food" },
+        { "id": "2", "title": "Vegan-food" }
+    ],
+    "dishes": [
+        { "id": "0", "title": "Hot-Dog", "categoryId": "0" },
+        { "id": "1", "title": "Burger", "categoryId": "0" },
+        { "id": "2", "title": "Fries", "categoryId": "0" },
+        { "id": "3", "title": "Nuggets", "categoryId": "0" },
+        { "id": "4", "title": "Kebab", "categoryId": "0" },
+        { "id": "5", "title": "Salmon pasta", "categoryId": "1" },
+        { "id": "6", "title": "Pesto eggs", "categoryId": "1" },
+        { "id": "7", "title": "Chicken stir-fry", "categoryId": "1" },
+        { "id": "8", "title": "Prawn fried rice", "categoryId": "1" },
+        { "id": "9", "title": "Lentil bolognese", "categoryId": "2" },
+        { "id": "10", "title": "Bombay burritos", "categoryId": "2" },
+        { "id": "11", "title": "Vegetable biryani", "categoryId": "2" },
+        { "id": "12", "title": "Shepherds pie", "categoryId": "2" }
+    ]
 }
