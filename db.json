@@ -1,0 +1,29 @@
+{
+  "categories": [
+    {
+      "Fast-food": [
+        "Hot-dog",
+        "Burger",
+        "Fries",
+        "Nuggets",
+        "Kebab"
+      ]
+    },
+    {
+      "Healthy-food": [
+        "Salmon pasta",
+        "Pesto eggs",
+        "Chicken stir-fry",
+        "Prawn fried rice"
+      ]
+    },
+    {
+      "Vegan-food": [
+        "Lentil bolognese",
+        "Bombay burritos",
+        "Vegetable biryani",
+        "Shepherds pie"
+      ]
+    }
+  ]
+}
