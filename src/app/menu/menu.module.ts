@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { MenuRoutingModule } from "./menu-routing.module";
 import { CategoriesComponent } from './components/categories/categories.component';
 import { DishesComponent } from './components/dishes/dishes.component';
-import { WelcomeComponent } from './pages/welcome/welcome/welcome.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
