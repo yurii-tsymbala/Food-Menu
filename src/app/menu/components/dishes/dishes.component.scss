@@ -4,21 +4,3 @@
     align-items: center;
     justify-content: center;
 }
-
-.dish {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    width: 9rem;
-    height: 9rem;
-    margin: 1rem;
-    color: white;
-    border-radius: 0.5rem;
-    background-color: rgb(60, 56, 56);
-}
-
-.dish:hover {
-    transform: scale(1.03);
-    background-color:rgb(93, 91, 91);
-  }

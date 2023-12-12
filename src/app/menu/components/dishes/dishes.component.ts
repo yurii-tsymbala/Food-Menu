@@ -21,7 +21,7 @@ export class DishesComponent implements OnInit {
         this.fetchDishes();
     }
 
-    showDialog() {
+    showDialog(dish: Dish) {
         this.matDialog.open(DishDialogComponent);
     }
 

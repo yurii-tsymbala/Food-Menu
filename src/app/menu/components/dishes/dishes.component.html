@@ -1,1 +1,5 @@
-<div class="dish" *ngFor="let dish of dishes" (click)="showDialog()" > {{dish.title}} </div>
+<dish
+    *ngFor="let dish of dishes"
+    [dish]="dish"
+    (showDishDetail)="showDialog($event)"
+></dish>
