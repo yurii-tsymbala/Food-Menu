@@ -17,3 +17,8 @@
     border-radius: 0.5rem;
     background-color: rgb(60, 56, 56);
 }
+
+.dish:hover {
+    transform: scale(1.03);
+    background-color:rgb(93, 91, 91);
+  }
