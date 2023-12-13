@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Category } from "src/app/shared/classes/Category";
+import { Ingredient } from "src/app/shared/classes/Ingredient";
 import { Dish } from "src/app/shared/classes/Dish";
 
 @Injectable({
@@ -10,6 +11,7 @@ import { Dish } from "src/app/shared/classes/Dish";
 export class DataService {
     private CATEGORY_URL = "http://localhost:3000/categories";
     private DISH_URL = "http://localhost:3000/dishes";
+    private INGREDIENT_URL = "http://localhost:3000/ingredients";
 
     constructor(private http: HttpClient) {}
 
@@ -18,7 +20,7 @@ export class DataService {
     }
 
     getCategoryById(id: string): Observable<Category> {
-        return this.http.get<Category>(this.CATEGORY_URL + id);
+        return this.http.get<Category>(`${this.CATEGORY_URL}/${id}`);
     }
 
     getCategories(): Observable<Category[]> {
@@ -30,18 +32,22 @@ export class DataService {
     }
 
     getDishById(id: string): Observable<Dish> {
-        return this.http.get<Dish>(this.DISH_URL + id);
+        return this.http.get<Dish>(`${this.DISH_URL}/${id}`);
     }
 
     getDishesByCategoryId(id: string): Observable<Dish[]> {
-        return this.http.get<Dish[]>(this.CATEGORY_URL + id + "dishes");
+        return this.http.get<Dish[]>(`${this.CATEGORY_URL}/${id}/dishes`);
     }
 
     getDishesByTitle(title: string): Observable<Dish[]> {
-        return this.http.get<Dish[]>(this.DISH_URL + "?q" + title);
+        return this.http.get<Dish[]>(`${this.DISH_URL}?q/${title}`);
     }
 
     getDishes(): Observable<Dish[]> {
-        return this.http.get<Dish[]>(this.DISH_URL)
+        return this.http.get<Dish[]>(this.DISH_URL);
+    }
+
+    getIngredientById(id: string): Observable<Ingredient> {
+        return this.http.get<Ingredient>(`${this.INGREDIENT_URL}/${id}`);
     }
 }

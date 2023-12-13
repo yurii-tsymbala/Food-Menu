@@ -1,5 +1,5 @@
-import { Component } from "@angular/core";
-import { Dish } from "src/app/shared/classes/Dish";
+import { Component, Inject } from "@angular/core";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 @Component({
     selector: "dish-dialog",
@@ -7,5 +7,8 @@ import { Dish } from "src/app/shared/classes/Dish";
     styleUrls: ["./dish-dialog.component.scss"],
 })
 export class DishDialogComponent {
-    
+    constructor(
+        @Inject(MAT_DIALOG_DATA)
+        public data: { ingredients: string[]}
+    ) {}
 }

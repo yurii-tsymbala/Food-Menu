@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "src/app/shared/services/data.service";
 import { Dish } from "src/app/shared/classes/Dish";
-import { DishDialogComponent } from "../dish-dialog/dish-dialog.component";
 import { MatDialog } from "@angular/material/dialog";
+import { DishDialogComponent } from "../dish-dialog/dish-dialog.component";
 
 @Component({
     selector: "dishes",
@@ -22,12 +22,21 @@ export class DishesComponent implements OnInit {
     }
 
     showDialog(dish: Dish) {
-        this.matDialog.open(DishDialogComponent);
+        const ingredients = dish.ingredients.map((ingredientId) => { // Remove & Fix
+            return this.dataService
+                .getIngredientById(ingredientId)
+                .subscribe((ingredient) => console.log(ingredient)
+                );
+        });
+
+        this.matDialog.open(DishDialogComponent, {
+            data: { ...dish },
+        });
     }
 
     fetchDishes(): void {
         this.dataService
-            .getDishes()
+            .getDishesByCategoryId("0")
             .subscribe((dishes) => (this.dishes = dishes));
     }
 }
