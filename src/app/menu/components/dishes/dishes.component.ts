@@ -22,11 +22,10 @@ export class DishesComponent implements OnInit {
     }
 
     showDialog(dish: Dish) {
-        const ingredients = dish.ingredients.map((ingredientId) => { // Remove & Fix
+        const ingredients = dish.ingredients.map((ingredientId) => {   // Remove & Fix
             return this.dataService
                 .getIngredientById(ingredientId)
-                .subscribe((ingredient) => console.log(ingredient)
-                );
+                .subscribe((ingredient) => console.log(ingredient));
         });
 
         this.matDialog.open(DishDialogComponent, {

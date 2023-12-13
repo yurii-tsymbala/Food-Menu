@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    height: 1.5rem;
+    margin: 1rem;
+    color: white;
+    border-radius: 0.5rem;
+    background-color: rgb(84, 67, 67);
+}
+
+:host:hover {
+    transform: scale(1.03);
+    background-color: rgb(93, 91, 91);
+}

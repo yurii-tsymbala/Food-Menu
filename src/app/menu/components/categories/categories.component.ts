@@ -21,4 +21,6 @@ export class CategoriesComponent implements OnInit {
             .getCategories()
             .subscribe((categories) => (this.categories = categories));
     }
+
+    showDishes(category: Category) {}
 }
