@@ -22,15 +22,13 @@ export class DishesComponent implements OnInit {
     }
 
     showDialog(dish: Dish) {
-        const ingredients = dish.ingredients.map((ingredientId) => {   // Remove & Fix
-            return this.dataService
-                .getIngredientById(ingredientId)
-                .subscribe((ingredient) => console.log(ingredient));
-        });
-
-        this.matDialog.open(DishDialogComponent, {
-            data: { ...dish },
-        });
+        this.dataService
+            .getIngredientsByDish(dish)
+            .subscribe((ingredients) => {
+                this.matDialog.open(DishDialogComponent, {
+                    data: { ingredients },
+                });
+            });
     }
 
     fetchDishes(): void {

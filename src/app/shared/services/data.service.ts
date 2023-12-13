@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, forkJoin, map } from "rxjs";
 import { Category } from "src/app/shared/classes/Category";
 import { Ingredient } from "src/app/shared/classes/Ingredient";
 import { Dish } from "src/app/shared/classes/Dish";
@@ -49,5 +49,14 @@ export class DataService {
 
     getIngredientById(id: string): Observable<Ingredient> {
         return this.http.get<Ingredient>(`${this.INGREDIENT_URL}/${id}`);
+    }
+
+    getIngredientsByDish(dish: Dish): Observable<string[]> {
+        const ingredients$ = dish.ingredients.map((ingredientId) => {
+            return this.getIngredientById(ingredientId).pipe(
+                map((ingredient) => ingredient.title)
+            );
+        });
+        return forkJoin(ingredients$);
     }
 }
