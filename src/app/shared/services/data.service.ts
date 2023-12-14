@@ -36,11 +36,17 @@ export class DataService {
     }
 
     getDishesByCategoryId(id: string): Observable<Dish[]> {
+        if (id === "-1") {
+            return this.getDishes();
+        }
         return this.http.get<Dish[]>(`${this.CATEGORY_URL}/${id}/dishes`);
     }
 
     getDishesByTitle(title: string): Observable<Dish[]> {
-        return this.http.get<Dish[]>(`${this.DISH_URL}?q/${title}`);
+        if (title) {
+            return this.http.get<Dish[]>(`${this.DISH_URL}?q=${title}`);
+        }
+        return this.getDishes();
     }
 
     getDishes(): Observable<Dish[]> {

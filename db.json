@@ -1,5 +1,6 @@
 {
     "categories": [
+        { "id": "-1", "title": "All" },
         { "id": "0", "title": "Fast-food" },
         { "id": "1", "title": "Healthy-food" },
         { "id": "2", "title": "Vegan-food" }
@@ -17,7 +18,8 @@
         { "id": "9", "title": "Lentil bolognese", "categoryId": "2", "ingredients": ["8","6","14"] },
         { "id": "10", "title": "Bombay burritos", "categoryId": "2", "ingredients": ["9","2","12"] },
         { "id": "11", "title": "Vegetable biryani", "categoryId": "2", "ingredients": ["5","10","13"] },
-        { "id": "12", "title": "Shepherds pie", "categoryId": "2", "ingredients": ["6","8","3", "16"] }
+        { "id": "12", "title": "Shepherds pie", "categoryId": "2", "ingredients": ["6","8","3", "16"] },
+        { "id": "13", "title": "Hamburger", "categoryId": "0", "ingredients": ["10","11","12"] }
     ],  
     "ingredients": [
         { "id": "0", "title": "Meat" },

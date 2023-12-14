@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { DataService } from "src/app/shared/services/data.service";
 import { Category } from "src/app/shared/classes/Category";
 
@@ -8,6 +8,7 @@ import { Category } from "src/app/shared/classes/Category";
     styleUrls: ["./categories.component.scss"],
 })
 export class CategoriesComponent implements OnInit {
+    @Output() updateDishes = new EventEmitter<Category>();
     categories: Category[] = [];
 
     constructor(private dataService: DataService) {}
@@ -22,5 +23,7 @@ export class CategoriesComponent implements OnInit {
             .subscribe((categories) => (this.categories = categories));
     }
 
-    showDishes(category: Category) {}
+    showDishes(category: Category) {
+        this.updateDishes.emit(category);
+    }
 }
