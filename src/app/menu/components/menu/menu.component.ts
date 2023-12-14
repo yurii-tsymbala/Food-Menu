@@ -10,14 +10,20 @@ import { DataService } from "src/app/shared/services/data.service";
     styleUrls: ["./menu.component.scss"],
 })
 export class MenuComponent implements OnInit {
-    @Input() dishes$!: Observable<Dish[]>; 
+    @Input() dishes$!: Observable<Dish[]>;
     constructor(private dataService: DataService) {}
 
     ngOnInit(): void {
-        this.dishes$ = this.dataService.getDishesByCategoryId("-1");
+        this.observeDishes();
     }
 
-    updateDishes(category: Category) { 
+    private observeDishes() {
+        this.dataService.updatedDishes$.subscribe((data$) => {
+            this.dishes$ = data$;
+        });
+    }
+
+    updateDishes(category: Category) {
         this.dishes$ = this.dataService.getDishesByCategoryId(category.id);
     }
 }

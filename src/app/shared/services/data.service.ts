@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, forkJoin, map } from "rxjs";
+import { BehaviorSubject, Observable, forkJoin, map } from "rxjs";
 import { Category } from "src/app/shared/classes/Category";
 import { Ingredient } from "src/app/shared/classes/Ingredient";
 import { Dish } from "src/app/shared/classes/Dish";
@@ -13,7 +13,15 @@ export class DataService {
     private DISH_URL = "http://localhost:3000/dishes";
     private INGREDIENT_URL = "http://localhost:3000/ingredients";
 
+    updatedDishes$ = new BehaviorSubject<Observable<Dish[]>>(
+        this.getDishesByCategoryId("-1")
+    );
+
     constructor(private http: HttpClient) {}
+
+    updateDishes(dishes: Observable<Dish[]>) {
+        this.updatedDishes$.next(dishes);
+    }
 
     addCategory(data: any): Observable<Category[]> {
         return this.http.post<Category[]>(this.CATEGORY_URL, data);
