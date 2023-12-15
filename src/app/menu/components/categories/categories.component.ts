@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "src/app/shared/services/data.service";
 import { Category } from "src/app/shared/classes/Category";
+import { take } from "rxjs";
 
 @Component({
     selector: "categories",
@@ -24,7 +25,7 @@ export class CategoriesComponent implements OnInit {
 
     protected updateDishes(category: Category): void {
         if (category.id) {
-            this.dataService.updateDishesByCategoryId(category.id);
+            this.dataService.getDishesByCategoryId(category.id).pipe(take(1)).subscribe()
         } else {
             this.dataService.getAllDishes();
         }

@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { take } from "rxjs";
 import { DataService } from "src/app/shared/services/data.service";
 
 @Component({
@@ -13,7 +14,7 @@ export class SearchComponent {
 
     protected getDish(): void {
         if (this.dishInputValue) {
-            this.dataService.updateDishesByTitle(this.dishInputValue);
+            this.dataService.getDishesByTitle(this.dishInputValue).pipe(take(1)).subscribe();
         } else {
             this.dataService.getAllDishes();
         }

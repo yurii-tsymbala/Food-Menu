@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, forkJoin, map } from "rxjs";
+import { BehaviorSubject, Observable, forkJoin, map, tap } from "rxjs";
 import { Category } from "src/app/shared/classes/Category";
 import { Ingredient } from "src/app/shared/classes/Ingredient";
 import { Dish } from "src/app/shared/classes/Dish";
@@ -15,22 +15,6 @@ export class DataService {
 
     constructor(private http: HttpClient) {}
 
-    updateDishesByCategoryId(id: string): void {
-        this.getDishesByCategoryId(id).subscribe((dishes) =>
-            this.dishes$.next(dishes)
-        );
-    }
-
-    updateDishesByTitle(title: string): void {
-        this.getDishesByTitle(title).subscribe((dishes) =>
-            this.dishes$.next(dishes)
-        );
-    }
-
-    getAllDishes() {
-        this.getDishes().subscribe((dishes) => this.dishes$.next(dishes));
-    }
-
     getCategories(): Observable<Category[]> {
         return this.http.get<Category[]>(Links.CATEGORY_URL);
     }
@@ -44,12 +28,24 @@ export class DataService {
         return forkJoin(ingredients$);
     }
 
-    private getDishesByCategoryId(id: string): Observable<Dish[]> {
-        return this.http.get<Dish[]>(`${Links.CATEGORY_URL}/${id}/dishes`);
+     getDishesByCategoryId(id: string): Observable<Dish[]> {
+        return this.http.get<Dish[]>(`${Links.CATEGORY_URL}/${id}/dishes`).pipe(
+            tap((value) => {
+                this.dishes$.next(value);
+            })
+        );
     }
 
-    private getDishesByTitle(title: string): Observable<Dish[]> {
-        return this.http.get<Dish[]>(`${Links.DISH_URL}?q=${title}`);
+    getDishesByTitle(title: string): Observable<Dish[]> {
+        return this.http.get<Dish[]>(`${Links.DISH_URL}?q=${title}`).pipe(
+            tap((value) => {
+                this.dishes$.next(value);
+            })
+        );
+    }
+
+    getAllDishes() { // TODO: remove this & refactor getDishes + check unsubs everuwhere
+        this.getDishes().subscribe((dishes) => this.dishes$.next(dishes));
     }
 
     private getDishes(): Observable<Dish[]> {

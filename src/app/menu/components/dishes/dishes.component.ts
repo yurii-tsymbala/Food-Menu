@@ -1,18 +1,18 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { DataService } from "src/app/shared/services/data.service";
 import { Dish } from "src/app/shared/classes/Dish";
 import { MatDialog } from "@angular/material/dialog";
 import { DishDialogComponent } from "../dish-dialog/dish-dialog.component";
-import { Subscription } from "rxjs/internal/Subscription";
+import { Observable } from "rxjs/internal/Observable";
+import { take } from "rxjs";
 
 @Component({
     selector: "dishes",
     templateUrl: "./dishes.component.html",
     styleUrls: ["./dishes.component.scss"],
 })
-export class DishesComponent implements OnInit, OnDestroy {
-    protected dishes!: Dish[];
-    private subscription!: Subscription;
+export class DishesComponent implements OnInit {
+    protected dishes$!: Observable<Dish[]>;
 
     constructor(
         private dataService: DataService,
@@ -24,22 +24,16 @@ export class DishesComponent implements OnInit, OnDestroy {
     }
 
     private observeDishes(): void {
-        this.dataService.updatedDishes$.subscribe((dishes) => {
-            this.dishes = dishes;
-        });
+        this.dishes$ = this.dataService.updatedDishes$
     }
 
     protected showDialog(dish: Dish): void {
-        this.subscription = this.dataService
-            .getIngredientsByDish(dish)
+         this.dataService
+            .getIngredientsByDish(dish).pipe(take(1))
             .subscribe((ingredients) => {
                 this.matDialog.open(DishDialogComponent, {
                     data: { ingredients },
                 });
             });
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
     }
 }
