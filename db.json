@@ -1,6 +1,6 @@
 {
     "categories": [
-        { "id": "-1", "title": "All" },
+        {"title": "All" },
         { "id": "0", "title": "Fast-food" },
         { "id": "1", "title": "Healthy-food" },
         { "id": "2", "title": "Vegan-food" }

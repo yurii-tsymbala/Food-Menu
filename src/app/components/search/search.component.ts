@@ -12,6 +12,10 @@ export class SearchComponent {
     constructor(private dataService: DataService) {}
 
     protected getDish(): void {
-        this.dataService.updateDishesByTitle(this.dishInputValue);
+        if (this.dishInputValue) {
+            this.dataService.updateDishesByTitle(this.dishInputValue);
+        } else {
+            this.dataService.getAllDishes();
+        }
     }
 }

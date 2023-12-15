@@ -27,6 +27,10 @@ export class DataService {
         );
     }
 
+    getAllDishes() {
+        this.getDishes().subscribe((dishes) => this.dishes$.next(dishes));
+    }
+
     getCategories(): Observable<Category[]> {
         return this.http.get<Category[]>(Links.CATEGORY_URL);
     }
@@ -41,17 +45,11 @@ export class DataService {
     }
 
     private getDishesByCategoryId(id: string): Observable<Dish[]> {
-        if (id === "-1") {
-            return this.getDishes();
-        }
         return this.http.get<Dish[]>(`${Links.CATEGORY_URL}/${id}/dishes`);
     }
 
     private getDishesByTitle(title: string): Observable<Dish[]> {
-        if (title) {
-            return this.http.get<Dish[]>(`${Links.DISH_URL}?q=${title}`);
-        }
-        return this.getDishes();
+        return this.http.get<Dish[]>(`${Links.DISH_URL}?q=${title}`);
     }
 
     private getDishes(): Observable<Dish[]> {

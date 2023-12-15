@@ -23,6 +23,10 @@ export class CategoriesComponent implements OnInit {
     }
 
     protected updateDishes(category: Category): void {
-        this.dataService.updateDishesByCategoryId(category.id);
+        if (category.id) {
+            this.dataService.updateDishesByCategoryId(category.id);
+        } else {
+            this.dataService.getAllDishes();
+        }
     }
 }
