@@ -4,65 +4,31 @@ import { BehaviorSubject, Observable, forkJoin, map } from "rxjs";
 import { Category } from "src/app/shared/classes/Category";
 import { Ingredient } from "src/app/shared/classes/Ingredient";
 import { Dish } from "src/app/shared/classes/Dish";
+import { Links } from "../classes/Links";
 
 @Injectable({
     providedIn: "root",
 })
 export class DataService {
-    private CATEGORY_URL = "http://localhost:3000/categories";
-    private DISH_URL = "http://localhost:3000/dishes";
-    private INGREDIENT_URL = "http://localhost:3000/ingredients";
-
-    updatedDishes$ = new BehaviorSubject<Observable<Dish[]>>(
-        this.getDishesByCategoryId("-1")
-    );
+    private dishes$ = new BehaviorSubject<Dish[]>([]);
+    readonly updatedDishes$ = this.dishes$.asObservable();
 
     constructor(private http: HttpClient) {}
 
-    updateDishes(dishes: Observable<Dish[]>) {
-        this.updatedDishes$.next(dishes);
+    updateDishesByCategoryId(id: string): void {
+        this.getDishesByCategoryId(id).subscribe((dishes) =>
+            this.dishes$.next(dishes)
+        );
     }
 
-    addCategory(data: any): Observable<Category[]> {
-        return this.http.post<Category[]>(this.CATEGORY_URL, data);
-    }
-
-    getCategoryById(id: string): Observable<Category> {
-        return this.http.get<Category>(`${this.CATEGORY_URL}/${id}`);
+    updateDishesByTitle(title: string): void {
+        this.getDishesByTitle(title).subscribe((dishes) =>
+            this.dishes$.next(dishes)
+        );
     }
 
     getCategories(): Observable<Category[]> {
-        return this.http.get<Category[]>(this.CATEGORY_URL);
-    }
-
-    addDish(data: any): Observable<Dish[]> {
-        return this.http.post<Dish[]>(this.DISH_URL, data);
-    }
-
-    getDishById(id: string): Observable<Dish> {
-        return this.http.get<Dish>(`${this.DISH_URL}/${id}`);
-    }
-
-    getDishesByCategoryId(id: string): Observable<Dish[]> {
-        if (id === "-1") {
-            return this.getDishes();
-        }
-        return this.http.get<Dish[]>(`${this.CATEGORY_URL}/${id}/dishes`);
-    }
-
-    getDishesByTitle(title: string): Observable<Dish[]> {
-        if (title) {
-            return this.http.get<Dish[]>(`${this.DISH_URL}?q=${title}`);
-        }
-        return this.getDishes();
-    }
-
-    getDishes(): Observable<Dish[]> {
-        return this.http.get<Dish[]>(this.DISH_URL);
-    }
-
-    getIngredientById(id: string): Observable<Ingredient> {
-        return this.http.get<Ingredient>(`${this.INGREDIENT_URL}/${id}`);
+        return this.http.get<Category[]>(Links.CATEGORY_URL);
     }
 
     getIngredientsByDish(dish: Dish): Observable<string[]> {
@@ -72,5 +38,43 @@ export class DataService {
             );
         });
         return forkJoin(ingredients$);
+    }
+
+    private getDishesByCategoryId(id: string): Observable<Dish[]> {
+        if (id === "-1") {
+            return this.getDishes();
+        }
+        return this.http.get<Dish[]>(`${Links.CATEGORY_URL}/${id}/dishes`);
+    }
+
+    private getDishesByTitle(title: string): Observable<Dish[]> {
+        if (title) {
+            return this.http.get<Dish[]>(`${Links.DISH_URL}?q=${title}`);
+        }
+        return this.getDishes();
+    }
+
+    private getDishes(): Observable<Dish[]> {
+        return this.http.get<Dish[]>(Links.DISH_URL);
+    }
+
+    private getIngredientById(id: string): Observable<Ingredient> {
+        return this.http.get<Ingredient>(`${Links.INGREDIENT_URL}/${id}`);
+    }
+
+    private addCategory(data: any): Observable<Category[]> {
+        return this.http.post<Category[]>(Links.CATEGORY_URL, data);
+    }
+
+    private getCategoryById(id: string): Observable<Category> {
+        return this.http.get<Category>(`${Links.CATEGORY_URL}/${id}`);
+    }
+
+    private addDish(data: any): Observable<Dish[]> {
+        return this.http.post<Dish[]>(Links.DISH_URL, data);
+    }
+
+    private getDishById(id: string): Observable<Dish> {
+        return this.http.get<Dish>(`${Links.DISH_URL}/${id}`);
     }
 }

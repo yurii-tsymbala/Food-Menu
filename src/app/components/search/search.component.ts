@@ -7,12 +7,11 @@ import { DataService } from "src/app/shared/services/data.service";
     styleUrls: ["./search.component.scss"],
 })
 export class SearchComponent {
-    dishInputValue = "";
+    protected dishInputValue = "";
 
     constructor(private dataService: DataService) {}
 
-    getDish() {
-        const data$ = this.dataService.getDishesByTitle(this.dishInputValue);
-        this.dataService.updateDishes(data$);
+    protected getDish(): void {
+        this.dataService.updateDishesByTitle(this.dishInputValue);
     }
 }

@@ -1,5 +1,5 @@
 <dish
-    *ngFor="let dish of dishes$ | async"
+    *ngFor="let dish of dishes"
     [dish]="dish"
     (showDishDetail)="showDialog($event)"
 ></dish>

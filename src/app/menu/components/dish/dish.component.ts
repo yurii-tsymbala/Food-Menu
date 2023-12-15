@@ -11,7 +11,7 @@ export class DishComponent {
     @Output() showDishDetail = new EventEmitter<Dish>();
 
     @HostListener("click")
-    onShowDetail() {
+    private onShowDetail(): void {
         this.showDishDetail.emit(this.dish);
     }
 }

@@ -8,11 +8,10 @@ import { Category } from 'src/app/shared/classes/Category';
 })
 export class CategoryComponent {
   @Input() category!: Category;
-  @Output() showDishes = new EventEmitter<Category>();
+  @Output() updateDishes = new EventEmitter<Category>();
 
   @HostListener("click")
-  onShowDishes() {
-      this.showDishes.emit(this.category);
+  private onCategoryClick(): void {
+      this.updateDishes.emit(this.category);
   }
-
 }

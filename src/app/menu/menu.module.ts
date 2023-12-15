@@ -7,8 +7,8 @@ import { WelcomeComponent } from "./components/welcome/welcome.component";
 import { MenuComponent } from "./components/menu/menu.component";
 import { DishDialogComponent } from "./components/dish-dialog/dish-dialog.component";
 import { SharedModule } from "../shared/shared.module";
-import { DishComponent } from './components/dish/dish.component';
-import { CategoryComponent } from './components/category/category.component';
+import { DishComponent } from "./components/dish/dish.component";
+import { CategoryComponent } from "./components/category/category.component";
 
 @NgModule({
     declarations: [
