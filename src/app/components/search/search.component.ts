@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewEncapsulation } from "@angular/core";
 import { take } from "rxjs";
 import { DataService } from "src/app/shared/services/data.service";
 
@@ -6,6 +6,7 @@ import { DataService } from "src/app/shared/services/data.service";
     selector: "search",
     templateUrl: "./search.component.html",
     styleUrls: ["./search.component.scss"],
+    encapsulation: ViewEncapsulation.None
 })
 export class SearchComponent {
     protected dishInputValue = "";

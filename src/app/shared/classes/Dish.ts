@@ -3,7 +3,8 @@ export class Dish {
         public id: string,
         public title: string,
         public categoryId: string,
-        public ingredients: string[]
+        public ingredients: string[],
+        public imgUrl:URL
     ) {}
 }
 

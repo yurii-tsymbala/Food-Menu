@@ -1,1 +1,5 @@
-{{dish.title}}
+<div
+    class="backgroundImg"
+    [ngStyle]="{ 'background-image': 'url(' + dish.imgUrl + ')' }"
+></div>
+<div class="textContainer">{{ dish.title.toUpperCase() }}</div>

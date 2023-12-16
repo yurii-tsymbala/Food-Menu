@@ -1,8 +1,11 @@
 :host {
-    margin-top: 1rem;
+    margin-top: 0.7rem;
+    padding: 0.7rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(202, 217, 244);
-    border-radius: 50vh;
+    background-color: #c6dfa481;;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    border: 0.3px solid rgba(0, 0, 0, 0.3);
 }

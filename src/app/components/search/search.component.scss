@@ -1,14 +1,21 @@
+$greenCustom: #7ab22d;
 :host {
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 0.5px solid whitesmoke;
-    border-radius: 6px;
-    background-color: #222222;
-  
-    &:focus-within {
-      border: 1.5px solid whitesmoke;
-    }
-  }
+}
 
-  
+mat-form-field {
+    margin-top: 1.5rem;
+}
+
+mat-label {
+   color: green;
+}
+
+div[matformfieldlineripple] {
+    display: none;
+}
+
+ 
+

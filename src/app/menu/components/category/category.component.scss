@@ -1,20 +1,30 @@
+$greenCustom: #8dc73f;
+$greenText: #7ab22d;
+
 :host {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 6rem;
+    width: 5rem;
     height: 1.5rem;
-    margin: 0.7rem;
-    color: white;
-    border-radius: 0.5rem;
-    background-color: rgb(84, 67, 67);
+    margin-right: 0.7rem;
+    color: $greenText;
+    border-radius: 2rem;
+    background-color: white;
+    border: 0.5px solid rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+
+    &:last-child {
+        margin-right: 0;
+    }
 }
 
 :host.selected {
-    background-color: rgb(87, 120, 212);
-    border: 2px solid rgb(177, 68, 68);
+    border: none;
+    background-color: $greenText;
+    color: white;
 }
 
 :host:hover {
-    transform: scale(1.04);
+    transform: scale(1.05);
 }
