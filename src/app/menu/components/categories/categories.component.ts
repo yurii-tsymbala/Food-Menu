@@ -10,6 +10,7 @@ import { Observable, take } from "rxjs";
 })
 export class CategoriesComponent implements OnInit {
     protected categories$!: Observable<Category[]>;
+    protected selectedIndex = 0;
 
     constructor(private dataService: DataService) {}
 
@@ -23,11 +24,14 @@ export class CategoriesComponent implements OnInit {
 
     protected updateDishes(category: Category): void {
         if (category.id) {
+            this.selectedIndex = Number(category.id) + 1;
+            
             this.dataService
                 .getDishesByCategoryId(category.id)
                 .pipe(take(1))
                 .subscribe();
         } else {
+            this.selectedIndex = 0;
             this.dataService.getDishes().pipe(take(1)).subscribe();
         }
     }

@@ -1,5 +1,8 @@
 <category
-    *ngFor="let category of categories$ | async "
+    *ngFor="let category of categories$ | async; index as i"
     [category]="category"
     (updateDishes)="updateDishes($event)"
+    [ngClass]="{ selected: selectedIndex === i }"
 ></category>
+
+

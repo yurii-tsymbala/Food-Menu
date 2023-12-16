@@ -11,7 +11,7 @@ export class CategoryComponent {
   @Output() updateDishes = new EventEmitter<Category>();
 
   @HostListener("click")
-  private onCategoryClick(): void {
+  private onCategoryClick(): void {  
       this.updateDishes.emit(this.category);
   }
 }

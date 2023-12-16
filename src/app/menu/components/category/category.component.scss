@@ -4,13 +4,17 @@
     justify-content: center;
     width: 6rem;
     height: 1.5rem;
-    margin: 1rem;
+    margin: 0.7rem;
     color: white;
     border-radius: 0.5rem;
     background-color: rgb(84, 67, 67);
 }
 
+:host.selected {
+    background-color: rgb(87, 120, 212);
+    border: 2px solid rgb(177, 68, 68);
+}
+
 :host:hover {
-    transform: scale(1.03);
-    background-color: rgb(93, 91, 91);
+    transform: scale(1.04);
 }
