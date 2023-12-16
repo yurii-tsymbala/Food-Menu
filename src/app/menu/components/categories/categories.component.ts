@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "src/app/shared/services/data.service";
 import { Category } from "src/app/shared/classes/Category";
-import { take } from "rxjs";
+import { Observable, take } from "rxjs";
 
 @Component({
     selector: "categories",
@@ -9,7 +9,7 @@ import { take } from "rxjs";
     styleUrls: ["./categories.component.scss"],
 })
 export class CategoriesComponent implements OnInit {
-    protected categories: Category[] = [];
+    protected categories$!: Observable<Category[]>;
 
     constructor(private dataService: DataService) {}
 
@@ -18,16 +18,17 @@ export class CategoriesComponent implements OnInit {
     }
 
     private getCategories(): void {
-        this.dataService
-            .getCategories()
-            .subscribe((categories) => (this.categories = categories));
+        this.categories$ = this.dataService.getCategories();
     }
 
     protected updateDishes(category: Category): void {
         if (category.id) {
-            this.dataService.getDishesByCategoryId(category.id).pipe(take(1)).subscribe()
+            this.dataService
+                .getDishesByCategoryId(category.id)
+                .pipe(take(1))
+                .subscribe();
         } else {
-            this.dataService.getAllDishes();
+            this.dataService.getDishes().pipe(take(1)).subscribe();
         }
     }
 }

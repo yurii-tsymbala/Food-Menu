@@ -16,7 +16,7 @@ export class SearchComponent {
         if (this.dishInputValue) {
             this.dataService.getDishesByTitle(this.dishInputValue).pipe(take(1)).subscribe();
         } else {
-            this.dataService.getAllDishes();
+            this.dataService.getDishes().pipe(take(1)).subscribe();
         }
     }
 }

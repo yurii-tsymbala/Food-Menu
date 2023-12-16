@@ -28,7 +28,7 @@ export class DataService {
         return forkJoin(ingredients$);
     }
 
-     getDishesByCategoryId(id: string): Observable<Dish[]> {
+    getDishesByCategoryId(id: string): Observable<Dish[]> {
         return this.http.get<Dish[]>(`${Links.CATEGORY_URL}/${id}/dishes`).pipe(
             tap((value) => {
                 this.dishes$.next(value);
@@ -44,12 +44,12 @@ export class DataService {
         );
     }
 
-    getAllDishes() { // TODO: remove this & refactor getDishes + check unsubs everuwhere
-        this.getDishes().subscribe((dishes) => this.dishes$.next(dishes));
-    }
-
-    private getDishes(): Observable<Dish[]> {
-        return this.http.get<Dish[]>(Links.DISH_URL);
+    getDishes(): Observable<Dish[]> {
+        return this.http.get<Dish[]>(Links.DISH_URL).pipe(
+            tap((value) => {
+                this.dishes$.next(value);
+            })
+        );
     }
 
     private getIngredientById(id: string): Observable<Ingredient> {

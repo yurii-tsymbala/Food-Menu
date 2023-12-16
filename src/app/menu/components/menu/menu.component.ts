@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { take } from "rxjs/internal/operators/take";
 import { DataService } from "src/app/shared/services/data.service";
 
 @Component({
@@ -9,6 +10,6 @@ import { DataService } from "src/app/shared/services/data.service";
 export class MenuComponent implements OnInit {
     constructor(private dataService: DataService) {}
     ngOnInit(): void {
-        this.dataService.getAllDishes()
+        this.dataService.getDishes().pipe(take(1)).subscribe()
     }
 }

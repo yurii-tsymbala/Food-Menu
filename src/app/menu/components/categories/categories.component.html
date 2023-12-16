@@ -1,5 +1,5 @@
 <category
-    *ngFor="let category of categories"
+    *ngFor="let category of categories$ | async "
     [category]="category"
     (updateDishes)="updateDishes($event)"
 ></category>
