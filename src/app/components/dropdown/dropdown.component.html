@@ -1,0 +1,23 @@
+<span class="fill-remaining-space">
+    <button class="main-btn"
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        #menuTrigger="matMenuTrigger"
+        (mouseover)="menuTrigger.openMenu()"
+        
+    >
+        <mat-icon class="main-icon">menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+        <span (mouseleave)="menuTrigger.closeMenu()">
+            <button mat-menu-item routerLink="">
+                <mat-icon>home</mat-icon>
+                <span class="text">Home</span>
+            </button>
+            <button mat-menu-item routerLink="menu">
+                <mat-icon>restaurant</mat-icon>
+                <span class="text">Menu</span>
+            </button>
+        </span>
+    </mat-menu>
+</span>

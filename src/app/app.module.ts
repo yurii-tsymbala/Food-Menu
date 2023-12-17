@@ -14,6 +14,7 @@ import { RouterLink } from "@angular/router";
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { SearchComponent } from "./components/search/search.component";
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { SearchComponent } from "./components/search/search.component";
         HeaderComponent,
         FooterComponent,
         SearchComponent,
+        DropdownComponent,
     ],
     imports: [
         BrowserModule,
