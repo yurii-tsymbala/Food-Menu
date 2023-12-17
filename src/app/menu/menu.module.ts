@@ -9,7 +9,10 @@ import { DishDialogComponent } from "./components/dish-dialog/dish-dialog.compon
 import { SharedModule } from "../shared/shared.module";
 import { DishComponent } from "./components/dish/dish.component";
 import { CategoryComponent } from "./components/category/category.component";
-import { AddDialogComponent } from './components/add-dialog/add-dialog.component';
+import { AddDialogComponent } from "./components/add-dialog/add-dialog.component";
+import { HttpClientModule } from "@angular/common/http";
+import { ReactiveFormsModule } from "@angular/forms";
+import { MaterialModule } from "../shared/material.module";
 
 @NgModule({
     declarations: [
@@ -22,7 +25,14 @@ import { AddDialogComponent } from './components/add-dialog/add-dialog.component
         CategoryComponent,
         AddDialogComponent,
     ],
-    imports: [CommonModule, MenuRoutingModule, SharedModule],
+    imports: [
+        CommonModule,
+        MenuRoutingModule,
+        SharedModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MaterialModule,
+    ],
     exports: [
         MenuComponent,
         CategoriesComponent,

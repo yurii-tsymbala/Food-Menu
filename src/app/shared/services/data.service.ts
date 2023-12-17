@@ -11,13 +11,11 @@ import { Links } from "../classes/Links";
 })
 export class DataService {
     private dishes$ = new BehaviorSubject<Dish[]>([]);
+    private categories$ = new BehaviorSubject<Category[]>([]);
     readonly updatedDishes$ = this.dishes$.asObservable();
+    readonly updatedCategories$ = this.categories$.asObservable();
 
     constructor(private http: HttpClient) {}
-
-    getCategories(): Observable<Category[]> {
-        return this.http.get<Category[]>(Links.CATEGORY_URL);
-    }
 
     getIngredientsByDish(dish: Dish): Observable<string[]> {
         const ingredients$ = dish.ingredients.map((ingredientId) => {
@@ -48,6 +46,14 @@ export class DataService {
         return this.http.get<Dish[]>(Links.DISH_URL).pipe(
             tap((value) => {
                 this.dishes$.next(value);
+            })
+        );
+    }
+
+    getCategories(): Observable<Category[]> {
+        return this.http.get<Category[]>(Links.CATEGORY_URL).pipe(
+            tap((value) => {
+                this.categories$.next(value);
             })
         );
     }

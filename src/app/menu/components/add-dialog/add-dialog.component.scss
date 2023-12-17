@@ -1,4 +1,4 @@
-:host {
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,11 +8,7 @@
     color: #7ab22d;
 }
 
-li {
-    font-size: larger;
-    font-style: italic;
-}
-
 h1 {
-   font-weight: bolder;
+    font-family: "Nunito";
+    font-weight: bolder;
 }
