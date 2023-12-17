@@ -12,22 +12,20 @@ $greenText: #7ab22d;
 }
 
 .main-btn {
-  padding: 12px;
-  background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-color: #7ab22d;
 }
 
 .main-icon {
     font-size: 30px;
-  }
-
-.text {
-    color:#7ab22d;
+    width: 30px;
+    height: 30px;
 }
 
-.fill-remaining-space {
-    /* This fills the remaining space, by using flexbox. 
-       Every toolbar row uses a flexbox row layout. */
-    flex: 1 1 auto;
-  }
+.text {
+    color: $greenText;
+}
 
-  
