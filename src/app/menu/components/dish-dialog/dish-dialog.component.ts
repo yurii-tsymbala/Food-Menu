@@ -9,6 +9,6 @@ import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 export class DishDialogComponent {
     constructor(
         @Inject(MAT_DIALOG_DATA)
-        public data: { ingredients: string[]}
+        public data: { ingredients: string[] }
     ) {}
 }

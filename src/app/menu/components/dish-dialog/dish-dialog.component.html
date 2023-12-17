@@ -1,3 +1,8 @@
 <div class="dialogContainer">
-    <h1>{{data.ingredients}}</h1>
+    <h1>Ingredients</h1>
+    <ul>
+        <li *ngFor="let ingredient of data.ingredients">
+            {{ ingredient }}
+        </li>
+    </ul>
 </div>
