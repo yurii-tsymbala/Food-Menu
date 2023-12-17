@@ -16,11 +16,19 @@ $greenText: #7ab22d;
     z-index: 1;
 }
 
-.navigation {
-    left: 3rem;
+.main-btn {
+    position: fixed;
     display: flex;
-    justify-content: center;
     align-items: center;
-    position: absolute;
+    justify-content: center;
+    right: 3rem;
+    padding: 0;
+    background-color: #7ab22d;
+}
+
+.main-icon {
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
 }
 

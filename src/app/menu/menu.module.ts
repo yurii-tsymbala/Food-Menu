@@ -9,6 +9,7 @@ import { DishDialogComponent } from "./components/dish-dialog/dish-dialog.compon
 import { SharedModule } from "../shared/shared.module";
 import { DishComponent } from "./components/dish/dish.component";
 import { CategoryComponent } from "./components/category/category.component";
+import { AddDialogComponent } from './components/add-dialog/add-dialog.component';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { CategoryComponent } from "./components/category/category.component";
         DishDialogComponent,
         DishComponent,
         CategoryComponent,
+        AddDialogComponent,
     ],
     imports: [CommonModule, MenuRoutingModule, SharedModule],
     exports: [
