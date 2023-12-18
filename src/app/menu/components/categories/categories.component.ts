@@ -15,11 +15,11 @@ export class CategoriesComponent implements OnInit {
     constructor(private dataService: DataService) {}
 
     ngOnInit(): void {
-        this.getCategories();
+        this.observeCategories();
     }
 
-    private getCategories(): void {
-        this.categories$ = this.dataService.getCategories();
+    private observeCategories(): void {
+        this.categories$ = this.dataService.updatedCategories$;
     }
 
     protected updateDishes(category: Category): void {

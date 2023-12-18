@@ -11,5 +11,6 @@ export class MenuComponent implements OnInit {
     constructor(private dataService: DataService) {}
     ngOnInit(): void {
         this.dataService.getDishes().pipe(take(1)).subscribe()
+        this.dataService.getCategories().pipe(take(1)).subscribe()
     }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
+import { take } from "rxjs/internal/operators/take";
 import { Category } from "src/app/shared/classes/Category";
 import { DataService } from "src/app/shared/services/data.service";
 
@@ -11,7 +12,6 @@ import { DataService } from "src/app/shared/services/data.service";
 })
 export class AddDialogComponent implements OnInit {
     protected reactiveForm!: FormGroup;
-    private category!: Category;
 
     constructor(private dataService: DataService) {}
 
@@ -22,6 +22,10 @@ export class AddDialogComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log(this.reactiveForm);
+        const categoryInput = this.reactiveForm.value.categoryInput;
+        this.dataService
+            .addCategory(new Category(Math.random().toString(), categoryInput)) // TODO: Refactor this
+            .pipe(take(1))
+            .subscribe()
     }
 }

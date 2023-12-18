@@ -1,6 +1,13 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, forkJoin, map, tap } from "rxjs";
+import {
+    BehaviorSubject,
+    Observable,
+    forkJoin,
+    map,
+    switchMap,
+    tap,
+} from "rxjs";
 import { Category } from "src/app/shared/classes/Category";
 import { Ingredient } from "src/app/shared/classes/Ingredient";
 import { Dish } from "src/app/shared/classes/Dish";
@@ -58,12 +65,13 @@ export class DataService {
         );
     }
 
-    private getIngredientById(id: string): Observable<Ingredient> {
-        return this.http.get<Ingredient>(`${Links.INGREDIENT_URL}/${id}`);
+    addCategory(data: Category): Observable<Category[]> {
+        return this.http.post<Category[]>(Links.CATEGORY_URL, data)
+            .pipe(switchMap(() => this.getCategories()));
     }
 
-    private addCategory(data: any): Observable<Category[]> {
-        return this.http.post<Category[]>(Links.CATEGORY_URL, data);
+    private getIngredientById(id: string): Observable<Ingredient> {
+        return this.http.get<Ingredient>(`${Links.INGREDIENT_URL}/${id}`);
     }
 
     private getCategoryById(id: string): Observable<Category> {
