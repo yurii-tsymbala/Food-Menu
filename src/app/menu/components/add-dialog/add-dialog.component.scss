@@ -12,3 +12,7 @@ h1 {
     font-family: "Nunito";
     font-weight: bolder;
 }
+
+mat-form-field.input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}

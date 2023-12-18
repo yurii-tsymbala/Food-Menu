@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { MatDialogRef } from "@angular/material/dialog";
 import { take } from "rxjs/internal/operators/take";
 import { Category } from "src/app/shared/classes/Category";
 import { DataService } from "src/app/shared/services/data.service";
@@ -13,19 +14,25 @@ import { DataService } from "src/app/shared/services/data.service";
 export class AddDialogComponent implements OnInit {
     protected reactiveForm!: FormGroup;
 
-    constructor(private dataService: DataService) {}
+    constructor(private dataService: DataService,
+        private ref: MatDialogRef<AddDialogComponent>) {}
 
     ngOnInit(): void {
         this.reactiveForm = new FormGroup({
-            categoryInput: new FormControl("Sea"),
-        });
+            categoryInput: new FormControl("Sea", [Validators.required, Validators.minLength(3)])
+        }, {updateOn: 'change'} );
     }
 
     onSubmit() {
-        const categoryInput = this.reactiveForm.value.categoryInput;
-        this.dataService
-            .addCategory(new Category(Math.random().toString(), categoryInput)) // TODO: Refactor this
-            .pipe(take(1))
-            .subscribe()
+        if (this.reactiveForm.valid) {
+            const categoryInput = this.reactiveForm.value.categoryInput;
+            this.dataService
+                .addCategory(
+                    new Category(Math.random().toString(), categoryInput) // TODO: Refactor this
+                ) 
+                .pipe(take(1))
+                .subscribe();
+            this.ref.close();    
+        }
     }
 }

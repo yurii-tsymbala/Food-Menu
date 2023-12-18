@@ -11,6 +11,6 @@ export class HeaderComponent {
     constructor(private matDialog: MatDialog) {}
 
     protected showAddDialog() {
-        this.matDialog.open(AddDialogComponent, { autoFocus: false });
+        this.matDialog.open(AddDialogComponent, { autoFocus: true});
     }
 }
