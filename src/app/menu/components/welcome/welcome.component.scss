@@ -6,9 +6,78 @@
     width: 100%;
     min-height: calc(100vh - 8rem);
     margin-top: 5rem;
-    color: white;
-    font-size: 4rem;
-    background-size: cover;
-    background-image: url("https://images.travelandleisureasia.com/wp-content/uploads/sites/4/2023/03/29160343/Asias-Best-Restaurant-1.jpg");
 }
 
+.coverContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 48vh;
+    position: relative;
+}
+
+.bluredBackground {
+    width: 100%;
+    height: 100%;
+    filter: blur(4px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(/assets/food.jpg);
+    position: absolute;
+}
+
+.menuBtn {
+    text-align: center;
+    color: white;
+    font-size: large;
+    background-color: #a5d06c;
+    width: 15rem;
+    height: 4rem;
+    border-radius: 0.5rem;
+    position: absolute;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+
+    &:hover {
+        transform: scale(1.01);
+        filter: brightness(0.9);
+    }
+}
+
+.infoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(52vh - 8rem);
+    padding-top: 1rem;
+}
+
+.infoCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 20rem;
+    height: 11rem;
+    margin-right: 2rem;
+    padding: 0 1rem 1rem 1rem;
+}
+
+.deliveryImg {
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+}
+
+.infoTitle {
+    font-size: large;
+    margin-bottom: 0.5rem;
+}
+
+.infoDesc {
+    font-size: small;
+    color: rgb(75, 75, 75);
+    text-align: center;
+}
