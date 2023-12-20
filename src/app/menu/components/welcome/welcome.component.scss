@@ -32,12 +32,12 @@
     text-align: center;
     color: white;
     font-size: large;
-    background-color: #a5d06c;
-    width: 15rem;
+    background-color: #7ab22d;
+    width: 14rem;
     height: 4rem;
     border-radius: 0.5rem;
     position: absolute;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
 
     &:hover {
         transform: scale(1.01);
@@ -63,6 +63,10 @@
     height: 11rem;
     margin-right: 2rem;
     padding: 0 1rem 1rem 1rem;
+    
+    &:last-child {
+        margin-right: 0;
+    }
 }
 
 .deliveryImg {
@@ -74,10 +78,12 @@
 .infoTitle {
     font-size: large;
     margin-bottom: 0.5rem;
+    color: #7ab22d;
 }
 
 .infoDesc {
     font-size: small;
     color: rgb(75, 75, 75);
     text-align: center;
+    color: #47671a;
 }

@@ -9,9 +9,10 @@ $greenText: #7ab22d;
     height: 1.5rem;
     margin-right: 0.7rem;
     color: $greenText;
-    border-radius: 2rem;
+    border-radius: 0.5rem;
     background-color: white;
     border: 0.5px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
     cursor: pointer;
 
     &:last-child {
