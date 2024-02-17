@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from "@angular/core";
-import { take } from "rxjs";
+import { debounce, interval, take } from "rxjs";
 import { DataService } from "src/app/shared/services/data.service";
 
 @Component({
@@ -15,7 +15,7 @@ export class SearchComponent {
 
     protected getDish(): void {
         if (this.dishInputValue) {
-            this.dataService.getDishesByTitle(this.dishInputValue).pipe(take(1)).subscribe();
+            this.dataService.getDishesByTitle(this.dishInputValue).pipe(debounce((value)=> interval(3000))).subscribe();
         } else {
             this.dataService.getDishes().pipe(take(1)).subscribe();
         }
